@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const sortedByNameAscending = () => {
-        var table, rows, switching, i, x, y, shouldSwitch;
+        let table, rows, switching, i, x, y, shouldSwitch;
         table = document.getElementById("summaryTable");
         switching = true;
         while (switching) {
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const sortedByNameDescending = () => {
-        var table, rows, switching, i, x, y, shouldSwitch;
+        let table, rows, switching, i, x, y, shouldSwitch;
         table = document.getElementById("summaryTable");
         switching = true;
         while (switching) {
