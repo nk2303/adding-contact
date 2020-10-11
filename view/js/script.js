@@ -21,9 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const nameElement = document.querySelector("#nameColumn")
 
+    let sortedAscending = false;
+
     nameElement.addEventListener('click', event => {
         event.preventDefault();
-        sortedByName()
+        if(!sortedAscending) {
+            sortedByNameAscending();
+        } else {
+            sortedByNameDescending();
+        }
     });
 
     const emptyField = () => {
@@ -82,30 +88,50 @@ document.addEventListener('DOMContentLoaded', () => {
         invalidDiv.style.display = "none";
     }
 
-    
+    const sortedByNameAscending = () => {
+        var table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById("summaryTable");
+        switching = true;
+        while (switching) {
+          switching = false;
+          rows = table.rows;
+          for (i = 1; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[0];
+            y = rows[i + 1].getElementsByTagName("TD")[0];
+            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+              shouldSwitch = true;
+              break;
+            }
+          }
+          if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+          }
+        }
+    }
+
+    const sortedByNameDescending = () => {
+        var table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById("summaryTable");
+        switching = true;
+        while (switching) {
+          switching = false;
+          rows = table.rows;
+          for (i = 1; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[0];
+            y = rows[i + 1].getElementsByTagName("TD")[0];
+            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+              shouldSwitch = true;
+              break;
+            }
+          }
+          if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+          }
+        }
+    }
 
 })
-
-
-const sortedByName = () => {
-    var table, rows, switching, i, x, y, shouldSwitch;
-    table = document.getElementById("summaryTable");
-    switching = true;
-    while (switching) {
-      switching = false;
-      rows = table.rows;
-      for (i = 1; i < (rows.length - 1); i++) {
-        shouldSwitch = false;
-        x = rows[i].getElementsByTagName("TD")[0];
-        y = rows[i + 1].getElementsByTagName("TD")[0];
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-          shouldSwitch = true;
-          break;
-        }
-      }
-      if (shouldSwitch) {
-        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-        switching = true;
-      }
-    }
-}
