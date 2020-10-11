@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
             switching = true;
           }
         }
+        sortedAscending = !sortedAscending
     }
 
     const sortedByNameDescending = () => {
@@ -132,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
             switching = true;
           }
         }
+        sortedAscending = !sortedAscending
     }
 
 })
